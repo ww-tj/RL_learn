@@ -1,0 +1,78 @@
+continue_u 数据链路
+
+1. 产生： 在execute后的action进行add_belief_in_pipeline， 需要的信息， action's ref, data,
+    belief_utils.add_belief_in_pipeline(
+        infostate,
+        continue_u,
+        ref=action.ref,
+        belief_data={
+            "pretreatment": deepcopy(infostate),
+            "state": "IN_PROGRESS",
+            "action": action,
+            "action_id": action_id,
+            "emitted_time": time.time(),
+        },
+        inplace_data=False,
+    ) 
+    
+    
+    
+ 2. 处理：update_ifs()
+ 	** 先进行了belief_step 
+ 	for one_env_state in env_state:
+            infostate = self.belief_step(infostate, one_env_state)
+           
+           
+           
+        再进行了belief_call
+        infostate = belief_instance.belief_call(self, infostate)
+        
+    	belief_call 完成后消失
+    	if data["state"] == "EXECUTED":
+            infostate = default_belief_call(infostate, self, data)
+            belief_utils.remove_belief(infostate, self.ref)
+            
+  continue_u对应的belief存储： infostate["attention_belief"]["continue_u"]
+  
+  other beliefs:     ref: [instance, data, depends]
+  continue_u         ref: [instance,{ref:instance + data}, depends]
+  
+  
+  
+  
+  continue_u' ref,    add, remove 都要用
+  
+  
+  continue_u's  instance 
+  1. 用来判断
+   if isinstance(belief_instance, UBase) or belief_instance.ref not in [
+                mind_intent_update.ref,
+                map_update.ref,
+                plan_in_action_update.ref,
+            ]:
+    2. call belief_call
+            
+
+  
+  
+  
+  
+  continue_u's data  
+  通过infostate和 action's ref在get_belief_data中找到对应的data
+  
+  
+  
+  
+  关于remove_belief, 都是action中的belief_call在用。
+  特殊情况： action_precondition_update的belief_call也在用
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+ 

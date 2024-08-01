@@ -1,0 +1,54 @@
+1. move cursor  
+h(left) j(down) k(up) l(right)
+
+
+2. normal mode
+2.1 delete 
+x --delete single character
+dw --delete single word and a space
+de --delete single word
+d0 --delete form the head of the line to the cursor
+d$ --delete form the cursor to the end of the line
+dd --delete the line 
+
+tip: using count could help to delete more, such as:
+d2w --delete 2 words
+3dd --delete 3 lines
+ 
+
+2.2 move cursor
+w --move to the head of the next word
+e --move to the end of the next word
+0 --move to the head of the line
+$ --move to the end of the line
+
+as the same as delete, count could be used, such as
+3w --move to the 3'st word behind
+2 --move to the 2'nd lines 
+
+2.3 undo
+u --undo the last change
+U --undo the whole line's change 
+
+2.4 put
+p --to put the previously deleted text after cursor
+if text are words, after p they are put after cursor.
+if text are lines, they are put after the line cursor lies.
+
+2.5 replace and change
+r --Move the cursor to the worng character, press r and the correct character,the correction is finished
+cw/ce --change from the cursor to the end of the word
+c [number] motion
+
+2.6 loaction and file status
+CTRL+G --show file status
+G --move to the bottom of the file
+gg --move to the start of the file
+[number]G --move to the number'st line
+
+2.7 search and parentheses match
+/target --cursor will focus on target(if exists), and n/N could help to switch target in two directions
+% --matching the focus parenthesis
+
+
+

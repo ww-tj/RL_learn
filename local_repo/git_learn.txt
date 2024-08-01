@@ -1,0 +1,9 @@
+用SSH连接local与remote
+
+1. 生成SSH密钥对 ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+	-t rsa :一种公钥加密算法
+	-b 4096 :bits
+	-C "your comment for ssh": comment
+	
+   生成的密钥对在～/.ssh下的id_ras（私） 和 id_rsa.pub（公）
+   把公钥配置到github的设置中
