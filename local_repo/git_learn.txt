@@ -9,3 +9,4 @@
    把公钥配置到github的设置中
 
 cat ~/.ssh/id_rsa.pub | pbcopy
+ssh-add ~/.ssh/id_rsa 
